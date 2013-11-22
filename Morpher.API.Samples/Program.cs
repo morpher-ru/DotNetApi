@@ -30,7 +30,7 @@ namespace Morpher.API.Samples
                                                СокращенноеНаименованиеЦелойЧасти = "евро"
                                            };
 
-            СуммаПрописью.СуммаПрописьюНаРазныхЯзыках (Factory.Russian.Generic.NumberSpelling, рубли, Russian.Case.Prepositional);
+            СуммаПрописью.СуммаПрописьюНаРазныхЯзыках (Factory.Russian.NumberSpelling.AsGeneric(), рубли, Russian.Case.Prepositional);
         }
 
 

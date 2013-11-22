@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Morpher
+﻿namespace Morpher
 {
     public class RussianFactory
     {
@@ -20,33 +18,6 @@ namespace Morpher
         {
             get {return factory.GetInterface <Russian.INumberSpelling> (); }
         }
-
-        public IGenericInterfaces<Russian.IParadigm> Generic 
-        {
-            get
-            {
-                return new GenericInterfaces();
-            }
-        }
-
-        private class GenericInterfaces : IGenericInterfaces<Russian.IParadigm>
-        {
-            IDeclension<Russian.IParadigm> IGenericInterfaces<Russian.IParadigm>.Declension
-            {
-                get { throw new NotImplementedException (); }
-            }
-
-            INumberSpelling<Russian.IParadigm> IGenericInterfaces<Russian.IParadigm>.NumberSpelling
-            {
-                get { throw new NotImplementedException (); }
-            }
-        }
-    }
-
-    public interface IGenericInterfaces <TParadigm>
-    {
-        IDeclension<TParadigm> Declension {get;}
-        INumberSpelling<TParadigm> NumberSpelling {get;}
     }
 
     public class UkranianFactory
@@ -66,14 +37,6 @@ namespace Morpher
         public Ukrainian.INumberSpelling NumberSpelling
         {
             get {return factory.GetInterface <Ukrainian.INumberSpelling> (); }
-        }
-
-        public IGenericInterfaces<Russian.IParadigm> Generic 
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
         }
     }
 

@@ -25,7 +25,7 @@ namespace Morpher
             this.func = func;
         }
 
-        string IGender.Get(IGenderParadigm paradigm)
+        string IGender.Get (IGenderParadigm paradigm)
         {
             return func (paradigm);
         }
@@ -80,11 +80,6 @@ namespace Morpher
         string Accusative    {get;}
         string Instrumental  {get;}
         string Prepositional {get;}
-    }
-
-    public interface ISlavicNumberSpelling
-    {
-        string Spell (decimal n, ref string unit, ICase <ISlavicParadigm> @case);
     }
 }
 
