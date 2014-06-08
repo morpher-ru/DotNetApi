@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Morpher;
 
 namespace AspNetSamples
 {
@@ -42,7 +37,7 @@ namespace AspNetSamples
 
         private static string Td (string s)
         {
-            return "<td width='33%'>" + (s) + "</td>";
+            return "<td width='33%'>" + s + "</td>";
         }
     }
 }

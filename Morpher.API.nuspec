@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Morpher.API</id>
+    <version>1.0.6</version>
+    <authors>Sergey Slepov</authors>
+    <owners>Sergey Slepov</owners>
+    <projectUrl>http://morpher.ru/dotnetapi</projectUrl>
+    <iconUrl>http://morpher.ru/favicon.ico</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Provides declension by case and number of Russian and Ukrainian names and common nouns.</description>
+    <releaseNotes>The library was split into several assemblies leaving only the interface definitions in Morpher.API.dll.  Other bits of code went into Morpher.AppConfigFactory.dll, Morpher.WebService.V2.dll and others.</releaseNotes>
+    <copyright>Copyright 2013</copyright>
+    <tags>declension pluralization russian ukrainian grammar morphology</tags>
+    <dependencies>
+    </dependencies>
+  </metadata>
+  <files>
+    <file target="lib\net40" src="Morpher.API\bin\Release\Morpher.API.dll" />
+    <file target="lib\net40" src="Morpher.WebService.V2\bin\Release\Morpher.WebService.V2.dll" />
+    <file target="lib\net40" src="Morpher.AppConfigFactory\bin\Release\Morpher.AppConfigFactory.dll" />
+    <file target="lib\net40" src="Morpher.Dynamic\bin\Release\Morpher.Dynamic.dll" />
+    <file target="lib\net40" src="Morpher.Generic\bin\Release\Morpher.Generic.dll" />
+    <file target="content\web.config.transform" src="web.config.transform" />
+    <file target="content\app.config.transform" src="web.config.transform" />
+  </files>
+</package>
