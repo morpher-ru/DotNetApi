@@ -1,12 +1,12 @@
-﻿using System;
-
-namespace Morpher.Ukrainian
+﻿namespace Morpher.Ukrainian
 {
     public class Case : ICase <IParadigm>
     {
-        private readonly Func <IParadigm, string> func;
+        delegate string Func (IParadigm p);
 
-        Case (Func <IParadigm, string> func)
+        private readonly Func func;
+
+        Case (Func func)
         {
             this.func = func;
         }
