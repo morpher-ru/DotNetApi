@@ -18,23 +18,23 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>bin\$(TargetFrameworkVersion)\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\Morpher.API.xml</DocumentationFile>
+    <DocumentationFile>bin\$(TargetFrameworkVersion)\Debug\Morpher.API.xml</DocumentationFile>
     <RegisterForComInterop>false</RegisterForComInterop>
     <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>bin\$(TargetFrameworkVersion)\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <RegisterForComInterop>false</RegisterForComInterop>
-    <DocumentationFile>bin\Release\Morpher.API.xml</DocumentationFile>
+    <DocumentationFile>bin\$(TargetFrameworkVersion)\Release\Morpher.API.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -44,9 +44,9 @@
     <Compile Include="ICase.cs" />
     <Compile Include="IGenderParadigm.cs" />
     <Compile Include="ISlavicParadigm.cs" />
-    <Compile Include="ParadigmExtensions.cs" />
+    <Compile Include="ParadigmExtensions.cs" Condition=" '$(TargetFrameworkVersion)' != 'v2.0' " />
     <Compile Include="Russian\Case.cs" />
-    <Compile Include="Russian\IDeclensionExtensions.cs" />
+    <Compile Include="Russian\IDeclensionExtensions.cs" Condition=" '$(TargetFrameworkVersion)' != 'v2.0' " />
     <Compile Include="Gender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Russian\IDeclension.cs" />
@@ -56,7 +56,7 @@
     <Compile Include="Russian\ParseArgs.cs" />
     <Compile Include="Ukrainian\Case.cs" />
     <Compile Include="Ukrainian\IDeclension.cs" />
-    <Compile Include="Ukrainian\IDeclensionExtensions.cs" />
+    <Compile Include="Ukrainian\IDeclensionExtensions.cs" Condition=" '$(TargetFrameworkVersion)' != 'v2.0' " />
     <Compile Include="Ukrainian\INumberSpelling.cs" />
     <Compile Include="Ukrainian\IParadigm.cs" />
     <Compile Include="Ukrainian\IParse.cs" />
