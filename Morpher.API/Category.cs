@@ -7,16 +7,9 @@
         /// </summary>
         Name,
 
-        Male, 
-        
-        Female,
-
-        Geo,
-
-        Country,
-
-        City,
-
+        /// <summary>
+        /// Not a person's name.
+        /// </summary>
         Other
     }
 }
