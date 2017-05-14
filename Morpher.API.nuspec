@@ -1,27 +1,26 @@
-<?xml version="1.0"?>
-<package >
-  <metadata>
-    <id>Morpher.API</id>
-    <version>1.0.6</version>
-    <authors>Sergey Slepov</authors>
-    <owners>Sergey Slepov</owners>
-    <projectUrl>http://morpher.ru/dotnetapi</projectUrl>
-    <iconUrl>http://morpher.ru/favicon.ico</iconUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Provides declension by case and number of Russian and Ukrainian names and common nouns.</description>
-    <releaseNotes>The library was split into several assemblies leaving only the interface definitions in Morpher.API.dll.  Other bits of code went into Morpher.AppConfigFactory.dll, Morpher.WebService.V2.dll and others.</releaseNotes>
-    <copyright>Copyright 2013</copyright>
-    <tags>declension pluralization russian ukrainian grammar morphology</tags>
-    <dependencies>
-    </dependencies>
-  </metadata>
-  <files>
-    <file target="lib\net40" src="Morpher.API\bin\Release\Morpher.API.dll" />
-    <file target="lib\net40" src="Morpher.WebService.V2\bin\Release\Morpher.WebService.V2.dll" />
-    <file target="lib\net40" src="Morpher.AppConfigFactory\bin\Release\Morpher.AppConfigFactory.dll" />
-    <file target="lib\net40" src="Morpher.Dynamic\bin\Release\Morpher.Dynamic.dll" />
-    <file target="lib\net40" src="Morpher.Generic\bin\Release\Morpher.Generic.dll" />
-    <file target="content\web.config.transform" src="web.config.transform" />
-    <file target="content\app.config.transform" src="web.config.transform" />
-  </files>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>Morpher.API</id>
+        <version>1.0.9</version>
+        <authors>Sergey Slepov</authors>
+        <owners>Sergey Slepov</owners>
+        <projectUrl>http://morpher.ru/dotnetapi</projectUrl>
+        <iconUrl>http://morpher.ru/favicon.ico</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Provides declension by case and number of Russian and Ukrainian names and common nouns.</description>
+        <summary />
+        <releaseNotes>All assemblies were signed.</releaseNotes>
+        <copyright>Copyright 2013 morpher.ru</copyright>
+        <tags>declension pluralization russian ukrainian grammar morphology</tags>
+    </metadata>
+    <files>
+        <file src="web.config.transform" target="content\app.config.transform" />
+        <file src="web.config.transform" target="content\web.config.transform" />
+        <file src="Morpher.API\bin\v4.0\Release\Morpher.API.dll" target="lib\net40\Morpher.API.dll" />
+        <file src="Morpher.AppConfigFactory\bin\Release\Morpher.AppConfigFactory.dll" target="lib\net40\Morpher.AppConfigFactory.dll" />
+        <file src="Morpher.Dynamic\bin\Release\Morpher.Dynamic.dll" target="lib\net40\Morpher.Dynamic.dll" />
+        <file src="Morpher.Generic\bin\Release\Morpher.Generic.dll" target="lib\net40\Morpher.Generic.dll" />
+        <file src="Morpher.WebService.V2\bin\Release\Morpher.WebService.V2.dll" target="lib\net40\Morpher.WebService.V2.dll" />
+    </files>
 </package>

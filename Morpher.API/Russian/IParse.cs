@@ -1,7 +1,7 @@
 ﻿namespace Morpher.Russian
 {
     /// <summary xml:lang="en">
-    /// Represents a set of inflectional forms of a Russian word or phrase, both singular and plural.  Normally instantiated by calling <see cref="IDeclension.Parse"/>.
+    /// Represents a set of inflectional forms of a Russian word or phrase, singular and plural.  Normally instantiated by calling <see cref="IDeclension.Parse"/>.
     /// </summary>
     /// <summary xml:lang="ru">
     /// Результат работы метода <see cref="IDeclension.Parse"/> - набор падежно-числовых форм слова или словосочетания.
@@ -27,7 +27,7 @@
         /// Paucal form, normally appears after the numerals 2, 3 and 4.
         /// </summary>
         /// <summary xml:lang="en">
-        /// Паукальная форма, встречающаяся после числительных оба, два, три и четыре.
+        /// Паукальная форма, встречающаяся после числительных два, три, четыре, оба и полтора.
         /// </summary>
         string Paucal {get;}
     }

@@ -6,9 +6,9 @@ namespace AspNetSamples
 {
     partial class FacebookStory
     {
-        private static readonly Dictionary <string, string> en = new Dictionary <string, string> ();
-        private static readonly Dictionary <string, string> ru = new Dictionary <string, string> ();
-        private static readonly Dictionary <string, string> uk = new Dictionary <string, string> ();
+        static readonly Dictionary <string, string> en = new Dictionary <string, string> ();
+        static readonly Dictionary <string, string> ru = new Dictionary <string, string> ();
+        static readonly Dictionary <string, string> uk = new Dictionary <string, string> ();
 
         static FacebookStory ()
         {
@@ -96,7 +96,7 @@ namespace AspNetSamples
             }
         }
 
-        private static string GetDeclension (string s, string format, Morpher.IDynamicDeclension morpher)
+        static string GetDeclension (string s, string format, Morpher.IDynamicDeclension morpher)
         {
             return Bold (string.IsNullOrEmpty (format) ? s : morpher.GetCase (s, format));
         }

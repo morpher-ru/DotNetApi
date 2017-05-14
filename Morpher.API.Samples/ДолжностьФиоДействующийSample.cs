@@ -5,6 +5,7 @@ using Morpher.Russian;
 
 namespace Morpher.API.Samples
 {
+    [Ignore]
     [TestClass]
     public class ДолжностьФиоДействующийSample
     {
