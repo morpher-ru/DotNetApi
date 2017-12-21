@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System;
+using System.Xml;
 
 namespace Morpher.WebService.V3
 {
@@ -15,10 +16,17 @@ namespace Morpher.WebService.V3
             _morpherClient = new MorpherClient();
         }
 
-        public Client(XmlNode parameters) : this ()
+        public Client(string token, string url)
         {
-            
+            if (Guid.TryParse(token, out Guid value))
+                _morpherClient = new MorpherClient(value, url);
+            else 
+                _morpherClient = new MorpherClient(url: url);
         }
+
+        public Client(XmlNode parameters) : this (
+            parameters.GetAttributeOrNull("token"),
+            parameters.GetAttributeOrNull("url")) { }
 
         Morpher.Russian.IParse Morpher.Russian.IDeclension.Parse(
             string s,
