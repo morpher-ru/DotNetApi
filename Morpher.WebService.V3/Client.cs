@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Morpher.WebService.V3
+﻿namespace Morpher.WebService.V3
 {
     public class Client
         : Morpher.Russian.IDeclension
@@ -22,17 +20,17 @@ namespace Morpher.WebService.V3
 
         Morpher.Ukrainian.IParse Morpher.Ukrainian.IDeclension.Parse(
             string s,
-            Morpher.Ukrainian.ParseArgs args)
-        {
-            throw new NotImplementedException();
-        }
+            Morpher.Ukrainian.ParseArgs args) 
+            => new Ukrainian.Parse(_morpherClient.Ukrainian.Parse(s));
 
         string Morpher.Russian.INumberSpelling.Spell(
             decimal n,
             ref string unit,
             ICase<Morpher.Russian.IParadigm> @case)
         {
-            throw new NotImplementedException();
+            var result = _morpherClient.Russian.Spell(n, unit);
+            unit = new Russian.UnitParadigm(result.UnitDeclension).Get(@case);
+            return new Russian.UnitParadigm(result.NumberDeclension).Get(@case);
         }
 
         string Morpher.Ukrainian.INumberSpelling.Spell(
@@ -40,7 +38,9 @@ namespace Morpher.WebService.V3
             ref string unit,
             ICase<Morpher.Ukrainian.IParadigm> @case)
         {
-            throw new NotImplementedException();
+            var result = _morpherClient.Ukrainian.Spell(n, unit);
+            unit = new Ukrainian.Paradigm(result.UnitDeclension).Get(@case);
+            return new Ukrainian.Paradigm(result.NumberDeclension).Get(@case);
         }
     }
 }

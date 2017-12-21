@@ -1,7 +1,6 @@
-﻿using System;
-using Morpher.Russian;
+﻿using Morpher.Ukrainian;
 
-namespace Morpher.WebService.V3.Russian
+namespace Morpher.WebService.V3.Ukrainian
 {
     internal class Paradigm : IParadigm
     {
@@ -18,8 +17,6 @@ namespace Morpher.WebService.V3.Russian
         public string Accusative => _forms.Accusative;
         public string Instrumental => _forms.Instrumental;
         public string Prepositional => _forms.Prepositional;
-
-        // TODO: locative in WS3?
-        public virtual string Locative => throw new NotImplementedException();
+        public string Vocative => _forms.Vocative;
     }
 }
