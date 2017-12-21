@@ -1,4 +1,6 @@
-﻿namespace Morpher.WebService.V3
+﻿using System.Xml;
+
+namespace Morpher.WebService.V3
 {
     public class Client
         : Morpher.Russian.IDeclension
@@ -11,6 +13,11 @@
         public Client()
         {
             _morpherClient = new MorpherClient();
+        }
+
+        public Client(XmlNode parameters) : this ()
+        {
+            
         }
 
         Morpher.Russian.IParse Morpher.Russian.IDeclension.Parse(

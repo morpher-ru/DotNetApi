@@ -20,6 +20,6 @@ namespace Morpher.WebService.V3.Russian
         public string Prepositional => _forms.Prepositional;
 
         // TODO: locative in WS3?
-        public virtual string Locative => throw new NotImplementedException();
+        public virtual string Locative => null;
     }
 }
