@@ -18,9 +18,7 @@ namespace Morpher.WebService.V3
         Morpher.Russian.IParse Morpher.Russian.IDeclension.Parse(
             string s,
             Morpher.Russian.ParseArgs args)
-        {
-            throw new NotImplementedException();
-        }
+            => new Russian.Parse(_morpherClient.Russian.Parse(s));
 
         Morpher.Ukrainian.IParse Morpher.Ukrainian.IDeclension.Parse(
             string s,
