@@ -18,7 +18,7 @@ namespace Morpher.WebService.V3
 
         public Client(string token, string url)
         {
-            if (Guid.TryParse(token, out Guid value))
+            if (Guid.TryParse(token, out var value))
                 _morpherClient = new MorpherClient(value, url);
             else 
                 _morpherClient = new MorpherClient(url: url);
