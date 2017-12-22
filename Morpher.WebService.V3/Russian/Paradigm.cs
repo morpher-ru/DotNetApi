@@ -1,53 +1,25 @@
-﻿using Morpher.WebService.V2.MorpherWebService;
+﻿using System;
+using Morpher.Russian;
 
-namespace Morpher.Russian
+namespace Morpher.WebService.V3.Russian
 {
-    abstract class Paradigm : IParadigm
+    internal class Paradigm : IParadigm
     {
-        private readonly string lemma;
+        private readonly DeclensionForms _forms;
 
-        protected Paradigm (string lemma)
+        public Paradigm(DeclensionForms forms)
         {
-            this.lemma = lemma;
+            _forms = forms;
         }
 
-        protected abstract Forms Forms {get;}
-        protected abstract string Locative {get;}
+        public string Nominative => _forms.Nominative;
+        public string Genitive => _forms.Genitive;
+        public string Dative => _forms.Dative;
+        public string Accusative => _forms.Accusative;
+        public string Instrumental => _forms.Instrumental;
+        public string Prepositional => _forms.Prepositional;
 
-        string IParadigm.Locative
-        {
-            get { return Locative; }
-        }
-
-        string ISlavicParadigm.Nominative
-        {
-            get { return lemma; }
-        }
-
-        string ISlavicParadigm.Genitive
-        {
-            get { return Forms.Р; }
-        }
-
-        string ISlavicParadigm.Dative
-        {
-            get { return Forms.Д; }
-        }
-
-        string ISlavicParadigm.Accusative
-        {
-            get { return Forms.В; }
-        }
-
-        string ISlavicParadigm.Instrumental
-        {
-            get { return Forms.Т; }
-        }
-
-        string ISlavicParadigm.Prepositional
-        {
-            get { return Forms.П; }
-        }
-       
+        // TODO: locative in WS3?
+        public virtual string Locative => null;
     }
 }

@@ -1,51 +1,22 @@
-﻿using Morpher.WebService.V2.MorpherWebService;
+﻿using Morpher.Ukrainian;
 
-namespace Morpher.Ukrainian
+namespace Morpher.WebService.V3.Ukrainian
 {
-    class Paradigm : IParadigm
+    internal class Paradigm : IParadigm
     {
-        private readonly FormsUkr forms;
+        private readonly DeclensionForms _forms;
 
-        public Paradigm (FormsUkr forms)
+        public Paradigm(DeclensionForms forms)
         {
-            this.forms = forms;
+            _forms = forms;
         }
 
-        FormsUkr Forms {get {return forms;}}
-
-        string ISlavicParadigm.Nominative
-        {
-            get { return Forms.Н; }
-        }
-
-        string ISlavicParadigm.Genitive
-        {
-            get { return Forms.Р; }
-        }
-
-        string ISlavicParadigm.Dative
-        {
-            get { return Forms.Д; }
-        }
-
-        string ISlavicParadigm.Accusative
-        {
-            get { return Forms.З; }
-        }
-
-        string ISlavicParadigm.Instrumental
-        {
-            get { return Forms.О; }
-        }
-
-        string ISlavicParadigm.Prepositional
-        {
-            get { return Forms.М; }
-        }
-
-        string IParadigm.Vocative
-        {
-            get { return Forms.К; }
-        }
+        public string Nominative => _forms.Nominative;
+        public string Genitive => _forms.Genitive;
+        public string Dative => _forms.Dative;
+        public string Accusative => _forms.Accusative;
+        public string Instrumental => _forms.Instrumental;
+        public string Prepositional => _forms.Prepositional;
+        public string Vocative => _forms.Vocative;
     }
 }

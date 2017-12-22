@@ -1,76 +1,60 @@
 ﻿using System;
-using System.Reflection;
-using System.ServiceModel;
 using System.Xml;
-using Morpher.WebService.V2.MorpherWebService;
 
-namespace Morpher.WebService.V2
+namespace Morpher.WebService.V3
 {
     public class Client
-        : Russian.IDeclension
-        , Ukrainian.IDeclension
-        , Russian.INumberSpelling
-        , Ukrainian.INumberSpelling
+        : Morpher.Russian.IDeclension
+        , Morpher.Ukrainian.IDeclension
+        , Morpher.Russian.INumberSpelling
+        , Morpher.Ukrainian.INumberSpelling
     {
-        private readonly WebServiceSoapClient soapClient;
-        private readonly Credentials credentials;
+        private readonly MorpherClient _morpherClient;
 
-        public Client () : this ((Parameters) null)
+        public Client()
         {
+            _morpherClient = new MorpherClient();
         }
 
-        public Client (Parameters parameters)
+        public Client(string token, string url)
         {
-            parameters = parameters ?? new Parameters ();
-
-            string url = parameters.Url ?? "http://morpher.ru/WebService.asmx";
-
-            soapClient = new WebServiceSoapClient (new BasicHttpBinding (),
-                                                   new EndpointAddress (new Uri (url)));
-
-            soapClient.Endpoint.Behaviors.Add (new HttpUserAgentEndpointBehavior (Assembly.GetExecutingAssembly().FullName));
-
-            credentials = new Credentials 
-            {
-                Username = parameters.Username, 
-                Password = parameters.Password
-            };
+            _morpherClient = Guid.TryParse(token, out var value) 
+                ? new MorpherClient(value, url) 
+                : new MorpherClient(url: url);
         }
 
-        public Client (XmlNode parameters)
-            : this (new Parameters {
-                Url      = parameters.GetAttributeOrNull ("url"),
-                Username = parameters.GetAttributeOrNull ("username"),
-                Password = parameters.GetAttributeOrNull ("password")})
+        public Client(XmlNode parameters) : this (
+            parameters.GetAttributeOrNull("token"),
+            parameters.GetAttributeOrNull("url")) { }
+
+        Morpher.Russian.IParse Morpher.Russian.IDeclension.Parse(
+            string s,
+            Morpher.Russian.ParseArgs args)
+            => new Russian.Parse(_morpherClient.Russian.Parse(s));
+
+        Morpher.Ukrainian.IParse Morpher.Ukrainian.IDeclension.Parse(
+            string s,
+            Morpher.Ukrainian.ParseArgs args) 
+            => new Ukrainian.Parse(_morpherClient.Ukrainian.Parse(s));
+
+        string Morpher.Russian.INumberSpelling.Spell(
+            decimal n,
+            ref string unit,
+            ICase<Morpher.Russian.IParadigm> @case)
         {
+            var result = _morpherClient.Russian.Spell(n, unit);
+            unit = new Russian.UnitParadigm(result.UnitDeclension).Get(@case);
+            return new Russian.UnitParadigm(result.NumberDeclension).Get(@case);
         }
 
-        Russian.IParse Russian.IDeclension.Parse(string s, Russian.ParseArgs args)
+        string Morpher.Ukrainian.INumberSpelling.Spell(
+            decimal n,
+            ref string unit,
+            ICase<Morpher.Ukrainian.IParadigm> @case)
         {
-            return new Russian.Parse (soapClient.GetXml (credentials, s), s);
-        }
-
-        Ukrainian.IParse Ukrainian.IDeclension.Parse(string s, Ukrainian.ParseArgs args)
-        {
-            return new Ukrainian.Parse (soapClient.GetXmlUkr (credentials, s), s);
-        }
-
-        string Russian.INumberSpelling.Spell (decimal n, ref string unit, ICase<Russian.IParadigm> @case)
-        {
-            var result = soapClient.Propis (credentials, (uint) n, unit);
-
-            unit = new Russian.UnitParadigm (result.unit).Get(@case);
-
-            return new Russian.UnitParadigm (result.n).Get(@case);
-        }
-
-        string Ukrainian.INumberSpelling.Spell (decimal n, ref string unit, ICase<Ukrainian.IParadigm> @case)
-        {
-            var result = soapClient.PropisUkr (credentials, (uint) n, unit);
-
-            unit = new Ukrainian.Paradigm (result.unit).Get (@case);
-
-            return new Ukrainian.Paradigm (result.n).Get (@case);
+            var result = _morpherClient.Ukrainian.Spell(n, unit);
+            unit = new Ukrainian.Paradigm(result.UnitDeclension).Get(@case);
+            return new Ukrainian.Paradigm(result.NumberDeclension).Get(@case);
         }
     }
 }

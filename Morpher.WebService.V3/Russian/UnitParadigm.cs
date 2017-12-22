@@ -1,24 +1,14 @@
-﻿using Morpher.WebService.V2.MorpherWebService;
-
-namespace Morpher.Russian
+﻿namespace Morpher.WebService.V3.Russian
 {
-    class UnitParadigm : Paradigm
+    internal class UnitParadigm : Paradigm
     {
-        private readonly Forms forms;
+        private readonly DeclensionForms _forms;
 
-        public UnitParadigm (Forms forms) : base (forms.И)
+        public UnitParadigm(DeclensionForms forms) : base(forms)
         {
-            this.forms = forms;
+            _forms = forms;
         }
 
-        protected override Forms Forms
-        {
-            get { return forms; }
-        }
-
-        protected override string Locative
-        {
-            get { return forms.П; } // Совпадает с предложным.
-        }
+        public override string Locative => _forms.Prepositional;
     }
 }
