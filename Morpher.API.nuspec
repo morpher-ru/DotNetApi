@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>Morpher.API</id>
-        <version>1.0.9</version>
+        <version>1.1.0</version>
         <authors>Sergey Slepov</authors>
         <owners>Sergey Slepov</owners>
         <projectUrl>http://morpher.ru/dotnetapi</projectUrl>
@@ -10,7 +10,7 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Provides declension by case and number of Russian and Ukrainian names and common nouns.</description>
         <summary />
-        <releaseNotes>All assemblies were signed.</releaseNotes>
+        <releaseNotes>Добавлен параметр "род" в IDynamicDeclension.GetCase.</releaseNotes>
         <copyright>Copyright 2013 morpher.ru</copyright>
         <tags>declension pluralization russian ukrainian grammar morphology</tags>
     </metadata>
