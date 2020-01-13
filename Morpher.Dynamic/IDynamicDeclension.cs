@@ -2,8 +2,6 @@
 {
     public interface IDynamicDeclension
     {
-        string GetCase (string phrase, string @case);
-		
-		string GetCase (string phrase, string @case, string rod);
+		string GetCase (string phrase, string @case, string rod = null);
     }
 }
