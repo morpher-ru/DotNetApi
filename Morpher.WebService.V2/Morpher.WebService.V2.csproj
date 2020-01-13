@@ -33,9 +33,6 @@
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.ServiceModel" />
@@ -69,7 +66,6 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="key.snk" />
     <None Include="Service References\MorpherWebService\Morpher.WebService.V2.MorpherWebService.GetXmlResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
